@@ -47,5 +47,7 @@ test
 prompt
 
 server.log
+# Prisma database
+/prisma/dev.db
 # Skills directory
 /skills/
