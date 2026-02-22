@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient, Teacher, Student } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
@@ -46,7 +46,7 @@ async function main() {
   });
 
   // Create teacher users
-  const teachers = [];
+  const teachers: Teacher[] = [];
   for (let i = 1; i <= 5; i++) {
     const user = await prisma.user.upsert({
       where: { email: `teacher${i}@school.edu` },
@@ -75,7 +75,7 @@ async function main() {
   }
 
   // Create student users with profiles
-  const students = [];
+  const students: Student[] = [];
   for (let i = 1; i <= 30; i++) {
     const deptIndex = i % departments.length;
     const semester = (i % 8) + 1;
