@@ -56,21 +56,75 @@ This scaffold provides a robust foundation built with:
 
 ## 🚀 Quick Start
 
+### 1. Install dependencies
 ```bash
-# Install dependencies
-bun install
-
-# Start development server
-bun run dev
-
-# Build for production
-bun run build
-
-# Start production server
-bun start
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to see your application running.
+### 2. Set up Database
+
+This project uses PostgreSQL. For production deployment on Vercel, we recommend using [Neon](https://neon.tech) (free tier available).
+
+#### **Option A: Using Neon (Recommended for Vercel)**
+
+1. Go to [https://neon.tech](https://neon.tech) and create a free account
+2. Create a new project
+3. Copy the connection string (it looks like: `postgresql://user:pass@ep-xxx.region.aws.neon.tech/dbname?sslmode=require`)
+4. Update your `.env` file:
+
+```bash
+DATABASE_URL="your-neon-connection-string"
+```
+
+#### **Option B: Local PostgreSQL**
+
+1. Install PostgreSQL on your machine
+2. Create a database
+3. Update `.env`:
+
+```bash
+DATABASE_URL="postgresql://user:password@localhost:5432/sms"
+```
+
+### 3. Initialize the database
+
+```bash
+# Generate Prisma Client
+npm run db:generate
+
+# Push schema to database
+npm run db:push
+
+# Seed with test data
+npm run db:seed
+```
+
+### 4. Start development server
+
+```bash
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) to see your application.
+
+### 5. Login Credentials (after seeding)
+
+- **Admin:** `admin@school.edu` / `admin123`
+- **Teacher:** `teacher1@school.edu` / `teacher123`  
+- **Student:** `student1@school.edu` / `student123`
+
+## 🚀 Deploying to Vercel
+
+1. Push your code to GitHub
+2. Import your repository in [Vercel](https://vercel.com)
+3. Add environment variables in Vercel dashboard:
+   - `DATABASE_URL` - Your Neon database connection string
+   - `NEXTAUTH_SECRET` - Generate with: `openssl rand -base64 32`
+   - `NEXTAUTH_URL` - Your production URL (e.g., `https://your-app.vercel.app`)
+4. Deploy!
+5. After first deployment, seed the database:
+   - Go to your Vercel project → Settings → Functions
+   - Or run locally: `DATABASE_URL="your-neon-url" npm run db:seed`
 
 
 
