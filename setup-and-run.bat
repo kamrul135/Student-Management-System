@@ -1,0 +1,9 @@
+@echo off
+echo Setting up database...
+call npx prisma db push --accept-data-loss
+echo.
+echo Seeding database...
+call npm run db:seed
+echo.
+echo Starting development server...
+call npm run dev
