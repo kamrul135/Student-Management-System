@@ -667,22 +667,6 @@ export default function StudentManagementSystem() {
                 {loading ? "Signing in..." : "Sign In"}
               </Button>
             </form>
-            
-            <div className="mt-8 p-4 bg-slate-100 dark:bg-slate-800 rounded-xl">
-              <p className="text-sm text-gray-500 dark:text-gray-400 text-center mb-3">Demo Credentials</p>
-              <div className="space-y-2">
-                {[
-                  { role: "Admin", email: "admin@school.edu", pass: "admin123", color: "bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400" },
-                  { role: "Teacher", email: "teacher1@school.edu", pass: "teacher123", color: "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400" },
-                  { role: "Student", email: "student1@school.edu", pass: "student123", color: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400" },
-                ].map((cred) => (
-                  <div key={cred.role} className="flex justify-between items-center p-2 bg-white dark:bg-slate-900 rounded-lg">
-                    <Badge className={cred.color}>{cred.role}</Badge>
-                    <span className="text-xs text-gray-500">{cred.email} / {cred.pass}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
           </motion.div>
         </div>
       </div>
